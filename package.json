@@ -13,12 +13,7 @@
     "build:component": "npm run bundle:component && ncp dist/vue-modal-lib.js demo/vue-modal-lib.js && ncp dist/vue-modal-lib.js.map demo/vue-modal-lib.js.map",
     "build:demo": "npm run bundle:demo && ncp dist/demo.js demo/demo.js && ncp dist/demo.js.map demo/demo.js.map"
   },
-  "dependencies": {
-    "ag-grid": "^5.0.1"
-  },
   "peerDependencies": {
-    "ag-grid": "^5.0.1",
-    "babel-runtime": "^6.0.0",
     "vue": "^1.0.0"
   },
   "devDependencies": {

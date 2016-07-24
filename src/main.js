@@ -1,9 +1,9 @@
 const Vue = require('vue')
 const mixin = require('./lib/mixin')
-
-Vue.mixin(mixin)
+Vue.use(mixin)
 
 window.$vm = new Vue({
+  name: 'app',
   el: '#main',
   modal: {
     alert: {
@@ -13,22 +13,22 @@ window.$vm = new Vue({
   },
   components: {
     thing: {
-      modal: { alert: {title: 'Custom Title!'}},
-      template: '<div><h4 @click="$alert({template: \'hhhhi\'})">jhgsdf!<h4></div>'
+      // modal: { alert: {title: 'Custom Title!'}},
+      template: '<div><h4 @click="$alert({template: \'hhhhi\'})">I am a child component!<h4></div>'
     }
   },
-  data: {
-    alertsTriggered: 0
-  },
   methods: {
-    showAltAlert() {
-      this.$alert({
+    askConfirmation() {
+      let youSaidYes = () => this.$alert({
+        title: 'Success!',
+        template: 'you said ok!'
+      })
+      this.$confirm({
         title: 'TITLE!',
         template: 'hiiiii'
       })
-      .then(res => {
-        console.log(res)
-        return res
+      .then(ok => {
+        if(ok) youSaidYes()
       })
       .catch(res => {
         console.error(res)

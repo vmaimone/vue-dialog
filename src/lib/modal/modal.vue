@@ -45,6 +45,9 @@
         /* 样式没什么用，但可以让根标签的transitionEnd生效，以去掉modal-leave */
         border-radius: 1px !important;
     }
+    .modal-dialog {
+        margin-top: 10vh;
+    }
     .modal-transition .modal-dialog, .modal-transition .modal-backdrop {
         transition: all .5s ease;
     }
@@ -85,9 +88,6 @@
       /*height:20vh;*/
     }
 
-    #modal-alert .modal-dialog {
-        margin: 100px auto;
-    }
     #modal-alert p.alert {
         padding: 2rem;
         margin: 0 auto;

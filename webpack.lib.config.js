@@ -6,7 +6,7 @@ const libConfig = Object.assign({}, config, {
     path: './dist',
     publicPath: '/dist/',
     filename: 'vue-modal-lib.js',
-    library: 'agGridVue',
+    library: 'vModal',
     libraryTarget: 'umd'
   }
 })

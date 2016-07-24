@@ -15,14 +15,14 @@
 </head>
 
 <body>
-  <div id="main">
+  <div id="main" class="container">
 
       <h2 style="margin:.5rem 0;float:left;">Modal Windows</h2>
 
       <hr style="clear:both">
 
       <button
-        class="big"
+        class="big btn btn-primary btn-lg text-uppercase"
         @click="$alert()"
         v-text="'Alert!'">
       </button>
@@ -30,8 +30,8 @@
       <hr>
 
       <button
-        class="big"
-        @click="showAltAlert"
+        class="big btn btn-primary btn-lg text-uppercase"
+        @click="askConfirmation"
         v-text="'Confirm!'">
       </button>
 
