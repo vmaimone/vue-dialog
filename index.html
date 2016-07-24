@@ -1,52 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>vag-grid</title>
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
 
-  </head>
-  <body>
-    <div id="app">
+<head>
+  <meta charset="utf-8">
+  <title>vue-modal lib</title>
+  <style>
+    button.big {
+      font-size: 2em;
+      padding: .5rem .75rem;
+    }
+  </style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-      <h2 style="margin:.5rem 0;float:left;">Customer Reserved Inventory</h2>
+</head>
 
+<body>
+  <div id="main">
 
-      <div>
-        <div style="float:right;margin:.5rem 0;text-align:right;;">
-          <input
-            type="text"
-            placeholder="type to search"
-            autofocus
-            @focus="$event.target.select()"
-            @input="$refs.grid.quickFilter = $event.target.value"
-            style="padding:.5rem .75rem; width: 24em"
-          />
-        </div>
-        <div style="clear:both;"></div>
-      </div>
+      <h2 style="margin:.5rem 0;float:left;">Modal Windows</h2>
 
-      <vag-grid
-        v-ref:grid
-        grid-id="demogrid"
-        :row-data="demoData"
-        :column-defs="coldefs">
-      </vag-grid>
+      <hr style="clear:both">
+
+      <button
+        class="big"
+        @click="$alert()"
+        v-text="'Alert!'">
+      </button>
 
       <hr>
 
-      <vag-grid
-        v-ref:other-grid
-        grid-id="demogrid2"
-        :row-data="demoData"
-        :api.sync="boundApi"
-        :column-defs="coldefs">
-      </vag-grid>
+      <button
+        class="big"
+        @click="showAltAlert"
+        v-text="'Confirm!'">
+      </button>
 
-      <div style="clear:both;"></div>
+      <hr>
+
+      <thing></thing>
+
+  </div>
 
 
-    <script src="dist/demo.js"></script>
+  <script src="dist/demo.js"></script>
 
-  </body>
+</body>
+
 </html>

@@ -1,70 +1,48 @@
 const Vue = require('vue')
-const vagGrid = require('./lib')
-const dataset = require('../demo/dev-data')
+const mixin = require('./lib/mixin')
 
-const api = {
-  getOrders() {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => resolve(dataset.slice(0)), 1e3)
-    })
-  }
-}
+Vue.mixin(mixin)
 
-new Vue({
-  el: '#app',
+window.$vm = new Vue({
+  el: '#main',
+  modal: {
+    alert: {
+      template: `this is the default alert`,
+      title: 'Default'
+    }
+  },
   components: {
-    vagGrid
+    thing: {
+      modal: { alert: {title: 'Custom Title!'}},
+      template: '<div><h4 @click="$alert({template: \'hhhhi\'})">jhgsdf!<h4></div>'
+    }
   },
   data: {
-    demoGridApi: null,
-    boundApi: null,
-    filterText: '',
-    sorts: [],
-    filters: [],
-    demoData: [],
-    coldefs: [
-      { field: 'source', headerName: 'Src' },
-      { field: 'inventoryId', headerName: 'Tag #' },
-      { field: 'itemNo', headerName: 'Product Code' },
-      { field: 'description', headerName: 'Description' },
-      { field: 'customer', headerName: 'Customer' },
-      { field: 'size', headerName: 'Size' },
-      { field: 'location', headerName: 'Location' },
-      { field: 'weight', headerName: 'Weight' },
-      { field: 'qty', headerName: 'Qty' },
-      { field: 'qtyOnOrder', headerName: 'Incoming' },
-      { field: 'qtyHardReserved', headerName: 'Rsvd' },
-      { field: 'vendor', headerName: 'Vendor' },
-      { field: 'poNumber', headerName: 'PO #' },
-      { field: 'bol', headerName: 'BOL #' },
-      { field: 'heat', headerName: 'Heat' }
-    ]
-
+    alertsTriggered: 0
+  },
+  methods: {
+    showAltAlert() {
+      this.$alert({
+        title: 'TITLE!',
+        template: 'hiiiii'
+      })
+      .then(res => {
+        console.log(res)
+        return res
+      })
+      .catch(res => {
+        console.error(res)
+        return res
+      })
+    }
   },
   ready() {
-    api
-      .getOrders()
-      .then(data => {
-        return this.demoData = data
+    console.log('main.js ready')
+    document.addEventListener('keyup', (e) => {
+      if(e.which !== 27) this.$alert({
+        template: '<h4>You pressed keycode ' + e.which + '!</h4>',
+        title: 'keyup event!'
       })
-      .then(data => {
-        console.log( this.demoGridApi )
-      })
-  },
-
-  // watch: {
-  //   rowData(n, o) {
-  //     if (n !== o) {
-  //       console.log(n)
-  //       this.api.setRowData(n || [])
-  //     }
-
-
-  //     this.api.setRowData(newVal);
-  //     this.$emit('filter-changed', this.filterModel);
-  //     this.api.sizeColumnsToFit();
-
-
-  //   }
-  // }
+    })
+  }
 })
