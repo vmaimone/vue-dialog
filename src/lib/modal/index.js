@@ -1,5 +1,6 @@
 /**
  * Bootstrap Style Modal Component for Vue
+ * Special thanks to @Coffcer (https://github.com/Coffcer/vue-bootstrap-modal)
  * Depends on Bootstrap.css
  */
 export default {
@@ -94,7 +95,7 @@ export default {
     }
   },
   beforeDestroy() {
-    document.body.className = document.body.className.replace(' modal-open', '')
+    document.body.className = document.body.className.replace(/\s?modal-open/, '')
   },
   watch: {
     show(value) {
@@ -109,7 +110,7 @@ export default {
         }
 
         window.setTimeout(() => {
-          document.body.className = document.body.className.replace(' modal-open', '')
+          document.body.className = document.body.className.replace(/\s?modal-open/, '')
         }, this.duration || 0)
       }
     }
