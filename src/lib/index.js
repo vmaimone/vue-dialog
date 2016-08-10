@@ -3,10 +3,9 @@ const vModal = require('./modal/index')
 const vAlert = require('./alert.vue')
 const vConfirm = require('./confirm.vue')
 
-module.exports = {
-  default: VueModalUtils,
-  vModal,
-  vAlert,
-  vConfirm,
-  VueModalUtils
-}
+module.exports = module.exports.default = VueModalUtils
+
+exports['vModal'] = vModal
+exports['vAlert'] = vAlert
+exports['vConfirm'] = vConfirm
+

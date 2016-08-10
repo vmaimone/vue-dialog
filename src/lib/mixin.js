@@ -44,7 +44,7 @@ module.exports = function install(Vue) {
         if (!modal) {
           return Promise.reject(this.generateErr('confirm'))
         } else {
-          let defaults = modal.alert || {}
+          let defaults = modal.confirm || {}
           let opts = Object.assign({}, defaults, options)
           return data.confirm.component.confirm(opts)
         }
