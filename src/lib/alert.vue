@@ -10,20 +10,34 @@ export default {
     closeWhenOK: {
       type: Boolean,
       default: true
+    },
+    cancelClass: {
+      type: String,
+      default : 'hidden'
     }
   },
   methods: {
-    alert({template, html, type, title}) {
-      if(this.show) return
+    alert({template, html, type, title, options}) {
+      if(this.show) return false
 
-      let tpl = template || html
-      let isErr = (type && /err/.test(type.toLowerCase()))
+      if(options) {
+        for( let key in options ) {
+          if(modal.props.hasOwnProperty(key)) this[key] = options[key]
+        }
+      }
+
+      this.html = (template || html) || this.template
+      this.title = title || this.title
+
+      if(type && /err/.test(type.toLowerCase())) {
+        this.type = 'error'
+      } else {
+        this.type = type || this.type
+      }
+
+      this.show = true
 
       return new Promise((resolve, reject) => {
-        this.html = tpl
-        this.title = title || this.title
-        this.type = isErr ? 'error' : (type || this.type)
-        this.show = true
         this.$once('ok', (...args) => {
           return resolve({ ok: true })
         })

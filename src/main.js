@@ -8,13 +8,14 @@ window.$vm = new Vue({
   modal: {
     alert: {
       template: `this is the default alert`,
-      title: 'Default'
+      title: 'Default',
+      type: 'errorman'
     }
   },
   components: {
     thing: {
-      // modal: { alert: {title: 'Custom Title!'}},
-      template: '<div><h4 @click="$alert({template: \'hhhhi\'})">I am a child component!<h4></div>'
+      modal: { alert: {title: 'Custom Title!'}},
+      template: '<div><h4 @click="$alert({template: \'I came from the child component!\'})">I am a child component!<h4></div>'
     }
   },
   methods: {
@@ -25,7 +26,10 @@ window.$vm = new Vue({
       })
       this.$confirm({
         title: 'TITLE!',
-        template: 'hiiiii'
+        template: 'hiiiii?',
+        options: {
+          'okClass': 'btn btn-danger'
+        }
       })
       .then(ok => {
         if(ok) youSaidYes()
