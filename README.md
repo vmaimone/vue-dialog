@@ -32,3 +32,9 @@ Vue.component('custom-alert', {
 })
 
 ```
+
+## Credits
+
+Special thanks to @Coffcer for providing the base modal component (https://github.com/Coffcer/vue-bootstrap-modal)
+
+ 
