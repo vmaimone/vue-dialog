@@ -5,7 +5,7 @@ A vue.js flavored alternative to `window.alert` and `window.confirm`.
 todo
 ```
 import Vue from 'vue'
-import vModal from '@vmaimone/vue-modal-lib
+import vModal from 'vue-dialog'
 
 Vue.use(vModal)
 
