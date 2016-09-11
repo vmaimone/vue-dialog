@@ -20,55 +20,61 @@ const data = {
   }
 }
 
-module.exports = function install(Vue) {
-  const alert = Vue.extend(_alert)
-  const confirm = Vue.extend(_confirm)
+let Vue; // late bind
 
-  Vue.mixin({
-
-    methods: {
-
-      $alert(options = {}) {
-        let { modal } = this.$options
-        if (!modal) {
-          return Promise.reject(this.generateErr('alert'))
-        } else {
-          let defaults = modal.alert || {}
-          let opts = Object.assign({}, defaults, options)
-          return data.alert.component.alert(opts)
-        }
-      },
-
-      $confirm(options = {}) {
-        let { modal } = this.$options
-        if (!modal) {
-          return Promise.reject(this.generateErr('confirm'))
-        } else {
-          let defaults = modal.confirm || {}
-          let opts = Object.assign({}, defaults, options)
-          return data.confirm.component.confirm(opts)
-        }
-      },
-
-      generateErr(flavor) {
-        let prefix = flavor ? `[${flavor} error]`.toUpperCase() : ''
-        let vm = this.$options.name || 'vm'
-        let msg = `'${vm}.modal' is missing`
-        return new Error(`${prefix}: ${msg}`)
-      },
+export default ({
+  methods: {
+    $alert(options = {}) {
+      let { modal } = this.$options
+      if (!modal) {
+        return Promise.reject(this.generateErr('alert'))
+      } else {
+        let defaults = modal.alert || {}
+        let opts = Object.assign({}, defaults, options)
+        return data.alert.component.alert(opts)
+      }
     },
 
-    compiled() {
-      if (!this.$options.modal) return
-
-      if (!document.getElementById(data.alert.id)) {
-        let el = this.$root.$el
-        el.insertAdjacentHTML('beforeEnd', data.alert.template)
-        el.insertAdjacentHTML('beforeEnd', data.confirm.template)
-        data.alert.component = new alert({ el: data.alert.selector })
-        data.confirm.component = new confirm({ el: data.confirm.selector })
+    $confirm(options = {}) {
+      let { modal } = this.$options
+      if (!modal) {
+        return Promise.reject(this.generateErr('confirm'))
+      } else {
+        let defaults = modal.confirm || {}
+        let opts = Object.assign({}, defaults, options)
+        return data.confirm.component.confirm(opts)
       }
-    }
-  })
+    },
 
-}
+    generateErr(flavor) {
+      let prefix = flavor ? `[${flavor} error]`.toUpperCase() : ''
+      let vm = this.$options.name || 'vm'
+      let msg = `'${vm}.modal' is missing`
+      return new Error(`${prefix}: ${msg}`)
+    }
+  },
+
+  compiled() {
+    if (!this.$options.modal) return
+
+    const el = this.$root.$el
+    const alert = Vue.extend(_alert)
+    const confirm = Vue.extend(_confirm)
+
+    if (!document.getElementById(data.confirm.id)) {
+      el.insertAdjacentHTML('beforeEnd', data.confirm.template)
+      data.confirm.component = new confirm({ el: data.confirm.selector })
+    }
+
+    if (!document.getElementById(data.alert.id)) {
+      el.insertAdjacentHTML('beforeEnd', data.alert.template)
+      data.alert.component = new alert({ el: data.alert.selector })
+    }
+
+  },
+
+  install(_Vue) {
+    Vue = _Vue
+    Vue.mixin(this)
+  }
+})

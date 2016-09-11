@@ -1,7 +1,6 @@
 const Vue = require('vue')
-const mixin = require('./lib/mixin')
-Vue.use(mixin)
-
+const vueDialog = require('./lib')
+Vue.use(vueDialog)
 window.$vm = new Vue({
   name: 'app',
   el: '#main',

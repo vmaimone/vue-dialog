@@ -6,7 +6,7 @@
   "author": "vin maimone",
   "license": "ISC",
   "scripts": {
-    "dev": "npm run build:demo && webpack-dev-server --inline --hot --host 0.0.0.0 --config webpack.demo.config.js",
+    "dev": "npm run build:demo && webpack-dev-server --inline --hot --host 0.0.0.0 --port 8081 --config webpack.demo.config.js",
     "build": "npm run build:component && npm run build:demo",
     "bundle:component": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.lib.config.js",
     "bundle:demo": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.demo.config.js",
@@ -17,6 +17,7 @@
     "vue": "^1.0.0"
   },
   "devDependencies": {
+    "@types/vue": "^1.0.29",
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
     "babel-plugin-transform-runtime": "^6.0.0",
@@ -28,6 +29,7 @@
     "json-loader": "^0.5.4",
     "ncp": "^2.0.0",
     "url-loader": "^0.5.7",
+    "vue": "^1.0.26",
     "vue-hot-reload-api": "^1.2.0",
     "vue-html-loader": "^1.0.0",
     "vue-loader": "^8.2.1",
