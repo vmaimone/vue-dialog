@@ -5,9 +5,9 @@ A vue.js flavored alternative to `window.alert` and `window.confirm`.
 todo
 ```
 import Vue from 'vue'
-import vModal from 'vue-dialog'
+import VueDialog from 'vue-dialog'
 
-Vue.use(vModal)
+Vue.use(VueDialog)
 
 new Vue({
   modal: {
@@ -25,7 +25,7 @@ new Vue({
 
 ```
 import Vue from 'vue'
-import { vAlert } from '@vmaimone/vue-modal-lib
+import { vAlert } from 'vue-dialog'
 
 Vue.component('custom-alert', {
   components: { vAlert }
@@ -37,4 +37,4 @@ Vue.component('custom-alert', {
 
 Special thanks to @Coffcer for providing the base modal component (https://github.com/Coffcer/vue-bootstrap-modal)
 
- 
+
