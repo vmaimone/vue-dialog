@@ -8,7 +8,6 @@ export default {
   props: {
     show: {
       type: Boolean,
-      twoWay: true,
       default: false
     },
     title: {
@@ -80,7 +79,7 @@ export default {
       }
     }
   },
-  ready() {
+  created() {
     // support for esc key press
     document.addEventListener('keydown', (e) => {
       const key = e.which || e.keyCode
@@ -88,11 +87,11 @@ export default {
         this.cancel()
       }
     })
-  },
-  created() {
+
     if (this.show) {
       document.body.className += ' modal-open'
     }
+    this.$on('open', this.open)
   },
   beforeDestroy() {
     document.body.className = document.body.className.replace(/\s?modal-open/, '')
@@ -116,6 +115,12 @@ export default {
     }
   },
   methods: {
+    open() {
+      this.$emit('open')
+      if (!this.show) {
+        this.show = true
+      }
+    },
     ok() {
       this.$emit('ok')
       if (this.closeWhenOK) {

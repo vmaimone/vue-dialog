@@ -14,7 +14,7 @@
     "build:demo": "npm run bundle:demo && ncp dist/demo.js demo/demo.js && ncp dist/demo.js.map demo/demo.js.map"
   },
   "peerDependencies": {
-    "vue": "^1.0.0"
+    "vue": "^2.0.0"
   },
   "devDependencies": {
     "@types/vue": "^1.0.29",
@@ -29,10 +29,10 @@
     "json-loader": "^0.5.4",
     "ncp": "^2.0.0",
     "url-loader": "^0.5.7",
-    "vue": "^1.0.26",
-    "vue-hot-reload-api": "^1.2.0",
+    "vue": "^2.0.0",
+    "vue-hot-reload-api": "^2.0.6",
     "vue-html-loader": "^1.0.0",
-    "vue-loader": "^8.2.1",
+    "vue-loader": "^9.5.1",
     "vue-style-loader": "^1.0.0",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.0"

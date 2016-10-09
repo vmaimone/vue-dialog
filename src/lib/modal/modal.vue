@@ -1,7 +1,7 @@
 <template>
     <div v-show="show" :transition="transition">
         <div class="modal" @click.self="clickMask">
-            <div class="modal-dialog" :class="modalClass" v-el:dialog>
+            <div class="modal-dialog" :class="modalClass" ref="dialog">
                 <div class="modal-content">
                     <!--Header-->
                     <div class="modal-header">
@@ -38,24 +38,27 @@
     .modal {
         display: block;
     }
-    .modal-transition {
+    .modal-enter-active, .modal-leave-active {
         transition: all .6s ease;
     }
-    .modal-leave {
+    .modal-leave-active {
         /* 样式没什么用，但可以让根标签的transitionEnd生效，以去掉modal-leave */
         border-radius: 1px !important;
     }
     .modal-dialog {
         margin-top: 10vh;
     }
-    .modal-transition .modal-dialog, .modal-transition .modal-backdrop {
+    .modal-enter-active .modal-dialog,
+    .modal-leave-active .modal-dialog,
+    .modal-enter-active .modal-dialog,
+    .modal-leave-active .modal-backdrop {
         transition: all .5s ease;
     }
-    .modal-enter .modal-dialog, .modal-leave .modal-dialog {
+    .modal-enter .modal-dialog, .modal-leave-active .modal-dialog {
         opacity: 0;
         transform: translateY(-30%);
     }
-    .modal-enter .modal-backdrop, .modal-leave .modal-backdrop {
+    .modal-enter .modal-backdrop, .modal-leave-active .modal-backdrop {
         opacity: 0;
     }
 
