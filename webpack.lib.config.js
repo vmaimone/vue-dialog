@@ -1,6 +1,6 @@
 const config = require('./webpack.base.config.js')
 
-const libConfig = Object.assign({}, config, {
+const libConfig = Object.assign(config, {
   entry: './src/lib/index.js',
   output: {
     path: './dist',

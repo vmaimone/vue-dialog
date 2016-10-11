@@ -20,10 +20,10 @@ module.exports = {
         test: /\.css$/,
         loader: 'css'
       },
-      {
-        test: /\.json$/,
-        loader: 'json'
-      },
+      // {
+      //   test: /\.json$/,
+      //   loader: 'json'
+      // },
       {
         test: /\.html$/,
         loader: 'vue-html'
