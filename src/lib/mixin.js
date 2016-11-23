@@ -54,7 +54,7 @@ export default ({
     }
   },
 
-  compiled() {
+  mounted() {
     if (!this.$options.modal) return
 
     const el = this.$root.$el
