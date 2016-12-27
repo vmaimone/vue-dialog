@@ -5,5 +5,3 @@ exports['install'] = function (Vue) {
   let mixin = require('./mixin').default
   mixin.install(Vue)
 }
-
-

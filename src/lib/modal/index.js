@@ -65,13 +65,13 @@ export default {
       type: String
     }
   },
-  data() {
+  data () {
     return {
       duration: null
     }
   },
   computed: {
-    modalClass() {
+    modalClass () {
       return {
         'modal-lg': this.large,
         'modal-sm': this.small,
@@ -79,7 +79,7 @@ export default {
       }
     }
   },
-  created() {
+  created () {
     // support for esc key press
     document.addEventListener('keydown', (e) => {
       const key = e.which || e.keyCode
@@ -93,17 +93,15 @@ export default {
     }
     this.$on('open', this.open)
   },
-  beforeDestroy() {
+  beforeDestroy () {
     document.body.className = document.body.className.replace(/\s?modal-open/, '')
   },
   watch: {
-    show(value) {
+    show (value) {
       // prevent double scrollbar
       if (value) {
         document.body.className += ' modal-open'
-      }
-      // add scrollbar to body
-      else {
+      } else {
         if (!this.duration) {
           this.duration = window.getComputedStyle(this.$el)['transition-duration'].replace('s', '') * 1000
         }
@@ -115,24 +113,24 @@ export default {
     }
   },
   methods: {
-    open() {
+    open () {
       this.$emit('open')
       if (!this.show) {
         this.show = true
       }
     },
-    ok() {
+    ok () {
       this.$emit('ok')
       if (this.closeWhenOK) {
         this.show = false
       }
     },
-    cancel() {
+    cancel () {
       this.$emit('cancel')
       this.show = false
     },
     // outside click
-    clickMask() {
+    clickMask () {
       if (!this.force) {
         this.cancel()
       }

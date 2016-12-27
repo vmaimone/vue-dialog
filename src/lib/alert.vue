@@ -13,23 +13,23 @@ export default {
     },
     cancelClass: {
       type: String,
-      default : 'hidden'
+      default: 'hidden'
     }
   },
   methods: {
-    alert({template, html, type, title, options}) {
-      if(this.show) return false
+    alert ({template, html, type, title, options}) {
+      if (this.show) return false
 
-      if(options) {
-        for( let key in options ) {
-          if(modal.props.hasOwnProperty(key)) this[key] = options[key]
+      if (options) {
+        for (let key in options) {
+          if (modal.props.hasOwnProperty(key)) this[key] = options[key]
         }
       }
 
       this.html = (template || html) || this.template
       this.title = title || this.title
 
-      if(type && /err/.test(type.toLowerCase())) {
+      if (type && /err/.test(type.toLowerCase())) {
         this.type = 'error'
       } else {
         this.type = type || this.type

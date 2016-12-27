@@ -20,11 +20,11 @@ const data = {
   }
 }
 
-let Vue; // late bind
+let Vue // late bind
 
 export default ({
   methods: {
-    $alert(options = {}) {
+    $alert (options = {}) {
       let { modal } = this.$options
       if (!modal) {
         return Promise.reject(this.generateErr('alert'))
@@ -35,7 +35,7 @@ export default ({
       }
     },
 
-    $confirm(options = {}) {
+    $confirm (options = {}) {
       let { modal } = this.$options
       if (!modal) {
         return Promise.reject(this.generateErr('confirm'))
@@ -46,7 +46,7 @@ export default ({
       }
     },
 
-    generateErr(flavor) {
+    generateErr (flavor) {
       let prefix = flavor ? `[${flavor} error]`.toUpperCase() : ''
       let vm = this.$options.name || 'vm'
       let msg = `'${vm}.modal' is missing`
@@ -54,26 +54,29 @@ export default ({
     }
   },
 
-  mounted() {
+  mounted () {
     if (!this.$options.modal) return
 
     const el = this.$root.$el
-    const alert = Vue.extend(_alert)
-    const confirm = Vue.extend(_confirm)
+    const Alert = Vue.extend(_alert)
+    const Confirm = Vue.extend(_confirm)
 
     if (!document.getElementById(data.confirm.id)) {
       el.insertAdjacentHTML('beforeEnd', data.confirm.template)
-      data.confirm.component = new confirm({ el: data.confirm.selector })
+      data.confirm.component = new Confirm({
+        el: data.confirm.selector
+      })
     }
 
     if (!document.getElementById(data.alert.id)) {
       el.insertAdjacentHTML('beforeEnd', data.alert.template)
-      data.alert.component = new alert({ el: data.alert.selector })
+      data.alert.component = new Alert({
+        el: data.alert.selector
+      })
     }
-
   },
 
-  install(_Vue) {
+  install (_Vue) {
     Vue = _Vue
     Vue.mixin(this)
   }
