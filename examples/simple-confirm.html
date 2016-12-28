@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue-dialog (simple)</title>
+  <link rel="stylesheet" href="modal.css">
+  <style>
+    #app > div > button {
+      width: 100%;
+      font-size: 2em;
+    }
+    #app > div {
+      width: 25vw;
+      margin: 4em auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <form @submit.prevent="$confirm">
+        <input v-model="inputVal">
+        <button
+          type="submit"
+          v-text="'submit the form'">
+        </button>
+      </form>
+    </div>
+  </div>
+  <script src="//unpkg.com/vue/dist/vue.js"></script>
+  <script src="//unpkg.com/vue-dialog"></script>
+  <script>
+    Vue.use(vModal)
+    window.vm = new Vue({
+      el: '#app',
+      data() {
+        return { inputVal: '' }
+      },
+      modal: {
+        confirm: {
+          title: 'Are you sure?',
+          template: 'This action requires confirmation from the user'
+        }
+      },
+      mounted() {
+        this.$on('close', e => {
+          console.log('close', e)
+        })
+      }
+    })
+  </script>
+</body>
+</html>

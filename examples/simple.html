@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>vue-dialog (simple)</title>
+  <link rel="stylesheet" href="modal.css">
+  <style>
+    #app > div > button {
+      width: 100%;
+      font-size: 2em;
+    }
+    #app > div {
+      width: 25vw;
+      margin: 4em auto;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div>
+      <button
+        @click="openModal"
+        type="button"
+        v-text="'show an alert'">
+      </button>
+    </div>
+  </div>
+  <script src="//unpkg.com/vue/dist/vue.min.js"></script>
+  <script src="//unpkg.com/vue-dialog"></script>
+  <script>
+    Vue.use(vModal)
+    window.vm = new Vue({
+      el: '#app',
+      modal: {
+        alert: {
+          title: 'Welcome',
+          template: 'to my house'
+        }
+      },
+      methods: {
+        openModal: function() {
+          return this
+            .$alert()
+            .then(result => {
+              console.log('exited alert with result', result)
+              return result
+            })
+        }
+      }
+    })
+  </script>
+</body>
+</html>
