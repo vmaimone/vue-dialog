@@ -21,7 +21,7 @@
 
       <hr>
 
-      <thing></thing>
+
   </div>
 </template>
 <script>
@@ -33,14 +33,6 @@ export default {
       template: `this is the default alert`,
       title: 'Default',
       type: 'errorman'
-    }
-  },
-  components: {
-    thing: {
-      modal: {
-        alert: { title: 'Custom Title!' }
-      },
-      template: '<div><h4 @click="$alert({template: \'I came from the child component!\'})">I am a child component!<h4></div>'
     }
   },
   methods: {
