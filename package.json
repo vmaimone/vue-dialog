@@ -10,9 +10,8 @@
     "build": "npm run build:component && npm run build:demo",
     "example-server": "npm run bundle:component && http-server -p 4002",
     "bundle:component": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.lib.config.js",
-    "bundle:demo": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.demo.config.js",
     "build:component": "npm run bundle:component && ncp dist/vue-modal-lib.js demo/vue-modal-lib.js && ncp dist/vue-modal-lib.js.map demo/vue-modal-lib.js.map",
-    "build:demo": "npm run bundle:demo && ncp dist/demo.js demo/demo.js && ncp dist/demo.js.map demo/demo.js.map"
+    "build:demo": "ncp dist/vue-modal-lib.js.map docs/dist/vue-modal-lib.js.map && ncp dist/vue-modal-lib.js docs/dist/vue-modal-lib.js"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
