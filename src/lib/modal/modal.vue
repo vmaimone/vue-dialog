@@ -1,7 +1,7 @@
 <template>
   <div v-show="show" :transition="transition">
     <div :class="{modal: true, 'is-active': show}">
-      <div class="modal-background" @keyup.escape="outsideClick" @click.stop="outsideClick"></div>
+      <div class="modal-background" @keydown.enter.stop @keyup.escape="outsideClick" @click.stop="outsideClick"></div>
       <div class="modal-content" :class="modalClass">
 
           <div class="modal-header">

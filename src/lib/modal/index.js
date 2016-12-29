@@ -86,12 +86,21 @@ export default {
       if (key === 27) { // 27 is esc
         this.cancel()
       }
+
+      if (key === 13 && this.show) {
+        if (!this.$el.contains(e.target)) {
+          e.preventDefault()
+          e.stopPropagation()
+        }
+      }
     })
 
     if (this.show) {
       document.body.className += ' modal-open'
     }
-    this.$on('open', this.open)
+    this.$on('open', e => {
+      return !this.show && this.open(e)
+    })
   },
   beforeDestroy () {
     document.body.className = document.body.className.replace(/\s?modal-open/, '')
@@ -101,6 +110,12 @@ export default {
       // prevent double scrollbar
       if (value) {
         document.body.className += ' modal-open'
+        let resize = new window.Event('resize')
+        let button = this.$el.querySelector('.modal-footer button')
+        this.$nextTick(() => {
+          window.dispatchEvent(resize)
+          if (button) button.focus()
+        })
       } else {
         if (!this.duration) {
           this.duration = window.getComputedStyle(this.$el)['transition-duration'].replace('s', '') * 1000
