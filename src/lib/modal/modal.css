@@ -36,6 +36,7 @@
   display: block;
   cursor: pointer;
   border-radius: 6px;
+  font-size: 20px;
   line-height: 1.5em;
   margin-top: -2px;
 }
