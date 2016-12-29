@@ -1,17 +1,8 @@
-  .modal-content {
-    background: white;
-  }
-  .modal-header {
-    padding: 1rem;
-  }
   .modal-title {
-    font-size: 1.5em;
+    font-size: 2em;
     padding: 0;
   }
   .modal-header .close {
-    float: right;
-    margin-top: .15rem;
-    padding: .25rem .5rem;
     display: block;
     cursor: pointer;
     border-radius: 6px;
@@ -19,12 +10,4 @@
   }
   .modal-header .close:hover {
     background-color: whitesmoke;
-  }
-  .modal-footer {
-    text-align: right;
-    padding: 1rem;
-  }
-  .modal-body {
-    padding: 1rem;
-    background: whitesmoke;
   }

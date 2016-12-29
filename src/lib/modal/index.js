@@ -129,8 +129,7 @@ export default {
       this.$emit('cancel')
       this.show = false
     },
-    // outside click
-    clickMask () {
+    outsideClick () {
       if (!this.force) {
         this.cancel()
       }
