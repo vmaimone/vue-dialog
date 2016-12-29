@@ -31,5 +31,5 @@
       </div>
     </div>
 </template>
-<style src="./modal.css" scoped></style>
+<style src="./modal.css"></style>
 <script src="./index.js"></script>

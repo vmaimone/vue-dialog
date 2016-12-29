@@ -4,7 +4,7 @@
  * Depends on Bootstrap.css
  */
 export default {
-  name: 'popup',
+  name: 'modal',
   props: {
     show: {
       type: Boolean,
@@ -12,7 +12,7 @@ export default {
     },
     title: {
       type: String,
-      default: 'Modal'
+      default: ''
     },
     small: {
       type: Boolean,
@@ -49,12 +49,12 @@ export default {
     // confirm class
     okClass: {
       type: String,
-      default: 'btn btn-secondary'
+      default: 'button btn btn-secondary'
     },
     // dismiss class
     cancelClass: {
       type: String,
-      default: 'btn btn-secondary'
+      default: 'button btn btn-secondary'
     },
     // auo-close on ok
     closeWhenOK: {
