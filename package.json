@@ -1,6 +1,6 @@
 {
   "name": "vue-dialog",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a collection of modal dialog utilities for vue",
   "main": "dist/vue-modal-lib.js",
   "author": "vin maimone",
