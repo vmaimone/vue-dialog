@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     alert ({template, html, type, title, options}) {
-      if (this.show) return false
+      if (this.show) return Promise.reject(false)
 
       if (options) {
         for (let key in options) {
