@@ -45,7 +45,7 @@ export default {
         title: 'TITLE!',
         template: 'hiiiii?',
         options: {
-          'okClass': 'btn btn-danger'
+          'okClass': 'btn button btn-danger is-primary is-outlined'
         }
       })
       .then(ok => {

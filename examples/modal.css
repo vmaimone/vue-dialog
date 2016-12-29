@@ -1,11 +1,4 @@
-  .modal-title {
-    font-size: 2em;
-    padding: 0;
-  }
   .modal-header .close {
-    display: block;
-    cursor: pointer;
-    border-radius: 6px;
     border:1px solid mediumturquoise;
   }
   .modal-header .close:hover {
