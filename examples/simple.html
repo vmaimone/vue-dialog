@@ -13,13 +13,17 @@
       width: 25vw;
       margin: 4em auto;
     }
+    #app .modal-header .close {
+      border: 1px solid mediumturquoise;
+      font-size: 16px;
+    }
   </style>
 </head>
 <body>
   <div id="app">
     <div>
       <button
-        @click="openModal"
+        @click.once="openModal"
         type="button"
         v-text="'show an alert'">
       </button>
@@ -39,6 +43,7 @@
       },
       methods: {
         openModal: function() {
+          console.log(this)
           return this
             .$alert()
             .then(result => {

@@ -41,6 +41,7 @@ export default {
         title: 'Success!',
         template: 'you said ok!'
       })
+
       this.$confirm({
         title: 'TITLE!',
         template: 'hiiiii?',
@@ -56,15 +57,6 @@ export default {
         return res
       })
     }
-  },
-  mounted () {
-    console.log('main.js ready')
-    document.addEventListener('keyup', (e) => {
-      if(e.which !== 27) this.$alert({
-        template: '<h4>You pressed keycode ' + e.which + '!</h4>',
-        title: 'keyup event!'
-      })
-    })
   }
 }
 </script>
