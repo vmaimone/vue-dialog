@@ -33,11 +33,9 @@
   float: right;
   min-width: 1.5em;
   text-align: center;
-  padding: .1rem 0rem .15rem .15rem;
   display: block;
   cursor: pointer;
   border-radius: 6px;
-  font-size: 21px;
   line-height: 1.5em;
   margin-top: -2px;
 }
