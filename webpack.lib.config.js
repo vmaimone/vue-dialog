@@ -5,8 +5,8 @@ const libConfig = Object.assign({}, config, {
   output: {
     path: './dist',
     publicPath: '/dist/',
-    filename: 'vue-modal-lib.js',
-    library: 'vModal',
+    filename: 'vue-dialog.js',
+    library: 'VueDialog',
     libraryTarget: 'umd'
   }
 })

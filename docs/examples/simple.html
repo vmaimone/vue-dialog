@@ -14,7 +14,7 @@
       margin: 4em auto;
     }
     #app .modal-header .close {
-      border: 1px solid mediumturquoise;
+      border: 1px solid lightgray;
       font-size: 16px;
     }
   </style>
@@ -25,14 +25,14 @@
       <button
         @click.once="openModal"
         type="button"
-        v-text="'show an alert'">
+        v-text="'vanilla alert'">
       </button>
     </div>
   </div>
   <script src="//unpkg.com/vue/dist/vue.min.js"></script>
-  <script src="../dist/vue-modal-lib.js"></script>
+  <script src="../dist/vue-dialog.js"></script>
   <script>
-    Vue.use(vModal)
+    Vue.use(VueDialog)
     window.vm = new Vue({
       el: '#app',
       modal: {

@@ -2,6 +2,12 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
+  entry: './src/main.js',
+  output: {
+    path: './dist',
+    publicPath: '/dist/',
+    filename: 'vue-dialog.js'
+  },
   resolveLoader: {
     root: path.join(__dirname, 'node_modules')
   },
@@ -40,7 +46,7 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: false
   },
   devtool: '#eval-source-map'
 }

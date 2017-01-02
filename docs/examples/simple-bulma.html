@@ -22,15 +22,16 @@
       <button
         @click="openModal"
         type="button"
-        v-text="'show an alert'">
+        class="button is-large is-dark is-outlined"
+        v-text="'bulma alert'">
       </button>
     </div>
   </div>
   <script src="//unpkg.com/vue/dist/vue.min.js"></script>
-  <script src="../dist/vue-modal-lib.js"></script>
+  <script src="../dist/vue-dialog.js"></script>
 
   <script>
-    Vue.use(vModal)
+    Vue.use(VueDialog)
     window.vm = new Vue({
       el: '#app',
       modal: {

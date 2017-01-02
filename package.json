@@ -2,16 +2,14 @@
   "name": "vue-dialog",
   "version": "0.1.1",
   "description": "a collection of modal dialog utilities for vue",
-  "main": "dist/vue-modal-lib.js",
+  "main": "dist/vue-dialog.js",
   "author": "vin maimone",
   "license": "ISC",
   "scripts": {
-    "dev": "npm run build:demo && webpack-dev-server --inline --hot --host 0.0.0.0 --port 8081 --config webpack.demo.config.js",
-    "build": "npm run build:component && npm run build:demo",
-    "example-server": "npm run bundle:component && http-server -p 4002",
-    "bundle:component": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.lib.config.js",
-    "build:component": "npm run bundle:component && ncp dist/vue-modal-lib.js demo/vue-modal-lib.js && ncp dist/vue-modal-lib.js.map demo/vue-modal-lib.js.map",
-    "build:demo": "ncp dist/vue-modal-lib.js.map docs/dist/vue-modal-lib.js.map && ncp dist/vue-modal-lib.js docs/dist/vue-modal-lib.js"
+    "dev": "webpack-dev-server --inline --hot --host 0.0.0.0 --port 8081 --config webpack.base.config.js",
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules --config webpack.lib.config.js",
+    "docs:copy": "ncp dist docs/dist",
+    "example-server": "npm run build && npm run docs:copy && cd docs && http-server -p 4002"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
