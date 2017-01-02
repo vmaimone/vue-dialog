@@ -1,6 +1,8 @@
 ## Description
 A vue.js flavored alternative to `window.alert` and `window.confirm`.
 
+Demo: https://vmaimone.github.io/vue-dialog/
+
 ## Usage Example
 todo
 ```
