@@ -46,7 +46,7 @@
           console.log(this)
           return this
             .$alert()
-            .then(result => {
+            .then(function(result) {
               console.log('exited alert with result', result)
               return result
             })
