@@ -44,7 +44,7 @@
         openModal: function() {
           return this
             .$alert({ okClass: 'bill' })
-            .then(result => {
+            .then(function(result) {
               console.log('exited alert with result', result)
               return result
             })
