@@ -1,5 +1,5 @@
 <template>
-  <div v-show="show" :transition="transition">
+  <div :style="{ 'visibility': show ? 'visible' : 'hidden', opacity: show ? '1' : '0' }" :transition="transition">
     <div :class="{modal: true, 'is-active': show}">
       <div class="modal-background" @keydown.enter.stop @keyup.escape="outsideClick" @click.stop="outsideClick"></div>
       <div class="modal-content" :class="modalClass">
